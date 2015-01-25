@@ -1,0 +1,28 @@
+{
+  "name": "simple-note",
+  "version": "0.0.0",
+  "description": "A tool to create and manage in-page notifications in the browser",
+  "main": "index.js",
+  "directories": {
+    "example": "examples"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "browser",
+    "notify",
+    "notifications"
+  ],
+  "author": "Michael Martin-Smucker <mlmartin13@gmail.com> (http://www.martinsmucker.com/)",
+  "license": "MIT",
+  "devDependencies": {
+    "browserify": "^8.1.1",
+    "gulp": "^3.8.10",
+    "gulp-autoprefixer": "^2.1.0",
+    "gulp-jshint": "^1.9.0",
+    "gulp-stylus": "^2.0.0",
+    "jshint-stylish": "^1.0.0",
+    "vinyl-source-stream": "^1.0.0"
+  }
+}

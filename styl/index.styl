@@ -1,0 +1,46 @@
+body
+  font-family sans-serif
+
+.sn-note
+  box-shadow 1px 1px 16px rgba(0, 0, 0 0.2)
+  box-sizing border-box
+  color #fff
+  height 80px
+  padding 0 20px
+  position relative
+  width 240px
+
+.sn-note-warn
+  background orange
+
+.sn-note-info
+  background #0ad
+
+.sn-note-success
+  background #9b3
+
+.sn-note-message
+  display block
+  position relative
+  top 50%
+  transform translateY(-50%)
+
+.sn-spinner-infinite
+  animation infiniteload 1000ms infinite linear
+  border 6px solid rgba(255, 255, 255, 0.15)
+  border-left-color rgba(255, 255, 255, 0.4)
+  position absolute
+  right 20px
+  top 20px
+
+.sn-spinner-infinite,
+.sn-spinner-infinite:after
+  border-radius 50%
+  height 25px
+  width 25px
+
+@keyframes infiniteload
+  0%
+    transform rotate(0deg)
+  100%
+    transform rotate(360deg)
