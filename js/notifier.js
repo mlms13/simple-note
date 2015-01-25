@@ -41,8 +41,9 @@ Notifier.prototype.removeNote = function (note, maxIndex) {
 
 Notifier.prototype.clear = function () {
   this.notes.forEach(function (note) {
-    this.removeNote(note);
+    note.erase();
   }, this);
+  this.notes = [];
 };
 
 module.exports = Notifier;
