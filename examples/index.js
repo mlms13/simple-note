@@ -6,3 +6,10 @@ myNotes.addNote({
   message: 'This is a warning!',
   duration: 20000
 });
+
+document.querySelector('#new-note').addEventListener("click", function () {
+  myNotes.replace({
+    type: 'success',
+    message: 'Replaced a Note!'
+  });
+});

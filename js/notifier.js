@@ -46,4 +46,9 @@ Notifier.prototype.clear = function () {
   this.notes = [];
 };
 
+Notifier.prototype.replace = function (newNote) {
+  this.clear();
+  this.addNote(newNote);
+};
+
 module.exports = Notifier;
