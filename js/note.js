@@ -1,7 +1,7 @@
 function Note(options) {
-  this.message = options.message;
   this.type = options.type || "info";
   this.duration = options.duration;
+  this.message = options.message;
 }
 
 function createSpinner () {

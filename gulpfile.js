@@ -1,38 +1,63 @@
-var gulp = require("gulp");
+var gulp = require("gulp"),
+
+    // gulp plugins and helpers
+    autoprefixer = require('gulp-autoprefixer'),
+    browserify = require('browserify'),
+    jshint = require('gulp-jshint'),
+    source = require('vinyl-source-stream'),
+    stylish = require('jshint-stylish'),
+    stylus = require('gulp-stylus'),
+
+    // configuration
+    paths = {
+      js: {
+        main: './examples/index.js',
+        all: ['./js/**/*', './examples/**/*.js', './gulpfile.js'],
+        dest: './dist/examples'
+      },
+      stylus: {
+        main: './examples/index.styl',
+        all: ['./examples/**/*.styl'],
+        dest: './dist/examples'
+      },
+      html: {
+        // main: '',
+        all: ['./examples/**/*.html'],
+        dest: './dist/examples'
+      }
+    };
 
 gulp.task('stylus', function () {
-  var stylus = require('gulp-stylus');
-  var autoprefixer = require('gulp-autoprefixer');
-
-  return gulp.src('./styl/index.styl')
+  return gulp.src(paths.stylus.main)
     .pipe(stylus())
     .pipe(autoprefixer())
-    .pipe(gulp.dest('./dist/css'));
+    .pipe(gulp.dest(paths.stylus.dest));
 });
 
 gulp.task('lint', function () {
-  var jshint = require('gulp-jshint');
-  var stylish = require('jshint-stylish');
-
-  return gulp.src(['./js/**/*', './examples/**/*.js', './gulpfile.js'])
+  return gulp.src(paths.js.all)
     .pipe(jshint())
     .pipe(jshint.reporter(stylish));
 });
 
 gulp.task('js', ['lint'], function () {
-  var browserify = require('browserify');
-  var source = require('vinyl-source-stream');
-  var bundler = browserify({ entries: './examples/index.js' });
-
-  return bundler
+  return browserify({ entries: paths.js.main })
     .bundle()
     .pipe(source('bundle.js'))
-    .pipe(gulp.dest('./dist/examples'));
+    .pipe(gulp.dest(paths.js.dest));
 });
 
-gulp.task('copy:examples', function () {
-  return gulp.src('./examples/index.html')
-    .pipe(gulp.dest('./dist/examples'));
+gulp.task('copy:html', function () {
+  return gulp.src(paths.html.all)
+    .pipe(gulp.dest(paths.html.dest));
 });
 
-gulp.task('default', ['stylus', 'js', 'copy:examples']);
+gulp.task('build', ['stylus', 'js', 'copy:html']);
+
+gulp.task('watch', ['build'], function () {
+  gulp.watch(paths.stylus.all, ['stylus']);
+  gulp.watch(paths.js.all, ['js']);
+  gulp.watch(paths.html.all, ['copy:html']);
+});
+
+gulp.task('default', ['build']);
