@@ -6,7 +6,27 @@
     <link rel="stylesheet" href="./index.css">
   </head>
   <body>
-    <button id="new-note">Replace Notification</button>
+    <form action="#" id="generate-note">
+      <div class="form-control">
+        <label for="notification-type">Notification Type:</label>
+        <select id="notification-type">
+          <option value="info">Info</option>
+          <option value="success">Success</option>
+          <option value="warning">Warning</option>
+          <option value="error">Error</option>
+        </select>
+      </div>
+      <div class="form-control">
+        <label for="notification-duration">Duration (ms):</label>
+        <input type="number" step="1000" id="notification-duration" value="5000">
+      </div>
+      <div class="form-control">
+        <label for="notification-message">Message:</label>
+        <textarea id="notification-message" cols="30" rows="4"></textarea>
+      </div>
+      <button type="submit" id="new-note">Replace Notification</button>
+    </form>
+    <div id="notification-area"></div>
     <script src="./bundle.js"></script>
   </body>
 </html>

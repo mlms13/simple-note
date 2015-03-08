@@ -1,5 +1,7 @@
 var Notifier = require('..');
-var myNotes = new Notifier();
+var myNotes = new Notifier({
+  container: document.querySelector('#notification-area')
+});
 
 myNotes.addNote({
   type: 'warn',

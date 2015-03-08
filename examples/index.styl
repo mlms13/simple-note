@@ -1,14 +1,74 @@
-body
-  font-family sans-serif
+$inputBorder = #ddd
+$inputBorderDark = darken($inputBorder, 15%)
 
+body,
+html
+  height 100%
+
+body
+  display flex
+  font-family sans-serif
+  margin 0
+
+#generate-note
+  flex 1 auto
+  padding 20px
+
+#notification-area
+  background #eee
+  box-shadow inset 3px 0 16px rgba(0, 0, 0, 0.2)
+  padding 20px
+  width 250px
+
+// Form Styles
+.form-control
+  display flex
+  margin-bottom 20px
+
+  label
+    color #444
+    width 180px
+
+  select,
+  input,
+  textarea
+    border 1px solid
+    box-sizing border-box
+    padding 5px
+    width 270px
+
+  select
+    background #fafafa
+    border-color $inputBorder $inputBorderDark $inputBorderDark $inputBorder
+
+  input,
+  textarea
+    border-color $inputBorderDark $inputBorder $inputBorder $inputBorderDark
+
+form button
+  background #0ad
+  border 0
+  box-sizing border-box
+  color #fff
+  cursor pointer
+  margin-left 310px
+  padding 7px
+  width 140px
+
+  &:hover
+    background lighten(#0ad, 8%)
+
+  &:active
+    background darken(#0ad, 5%)
+
+// Notification Styles
 .sn-note
-  box-shadow 1px 1px 16px rgba(0, 0, 0 0.2)
+  box-shadow 1px 1px 16px rgba(0, 0, 0, 0.2)
   box-sizing border-box
   color #fff
   height 80px
   padding 0 20px
   position relative
-  width 240px
 
 .sn-note-info
   background #0ad
