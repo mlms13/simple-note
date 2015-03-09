@@ -10,8 +10,9 @@ myNotes.addNote({
 });
 
 document.querySelector('#new-note').addEventListener("click", function () {
-  myNotes.replace({
-    type: 'success',
-    message: 'Replaced a Note!'
+  myNotes.addNote({
+    type: document.querySelector('#notification-type').value,
+    duration: document.querySelector('#notification-duration').value,
+    message: document.querySelector('#notification-message').value
   });
 });
