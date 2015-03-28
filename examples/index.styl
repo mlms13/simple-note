@@ -89,22 +89,27 @@ form button
   top 50%
   transform translateY(-50%)
 
-.sn-spinner-infinite
-  animation infiniteload 1000ms infinite linear
-  border 6px solid rgba(255, 255, 255, 0.15)
-  border-left-color rgba(255, 255, 255, 0.4)
+.sn-loading
+  height 42px
   position absolute
   right 20px
   top 20px
+  width 42px
 
-.sn-spinner-infinite,
-.sn-spinner-infinite:after
-  border-radius 50%
-  height 25px
-  width 25px
+  &__bg
+  &__spin
+    stroke-opacity 0.2
+    stroke #fff
+    stroke-width 6px
+  &__spin
+    stroke-opacity 0.5
+    transition stroke-dashoffset 2s linear
+    &.infinite
+      animation spinforever 2s linear infinite
+      transform-origin center
 
-@keyframes infiniteload
-  0%
-    transform rotate(0deg)
-  100%
-    transform rotate(360deg)
+@keyframes spinforever
+  from
+    transform rotate(0turn)
+  to
+    transform rotate(1turn)
